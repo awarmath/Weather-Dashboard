@@ -2,3 +2,23 @@
     font-size: xx-large;
     font-weight: bold;
 }
+h4 {
+    font-size: large;
+    font-weight: bold;
+}
+.search {
+    padding: 1%;
+}
+.current-city, .city-name, .city-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center/space-around;
+    font-size: x-large;
+    font-weight: bold;
+}
+#current-temp {
+    padding-top: 2%;
+}
+#forecast {
+    padding-top: 2%;
+}

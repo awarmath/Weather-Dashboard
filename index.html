@@ -17,8 +17,8 @@
     </nav>
     <div class="search">
         <div class="row">
-            <div class="col-3 bg-light">
-                <h3 class="my-1">Search for a City:</h3>
+            <div class="col-3 bg-light search">
+                <h4 class="my-1">Search for a City:</h4>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" area-describedby="button-addon2">
                     <div class="input-group-append">
@@ -28,8 +28,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9">
-
+            <div class="col-md-9">
+                <div id="current-weather" class='card'>
+                    <div class="card-body">
+                        <div class="current-city">
+                            <span id="city-name">City Placeholder</span>
+                            <span id="city-icon">Date Placeholder</span>
+                        </div>
+                        <p id="current-temp">Temperature</p>
+                        <p id="current-humidity">Humidity</p>
+                        <p id="current-wind">Wind Speed</p>
+                        <p id="current-uv">UV Index</p>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="forecast" class="col-12">
+                        <h3>5-Day Forecast:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
+                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
+                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
+                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
+                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
+                </div>
             </div>
         </div>
     </div>
