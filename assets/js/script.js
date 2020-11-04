@@ -4,35 +4,50 @@ $(document).ready(function () {
     var city = "";
     var current_date = moment().format("L");
     var search_history = JSON.parse(localStorage.getItem("cities")) === null ? [] : JSON.parse(localStorage.getItem("cities"));
-  
+    
     displaySearchHistory();
+  // When user searches for a city, hit the API
     function getWeather() {
         if ($(this).attr("id") === "search-city") {
             city = $("#city").val();
         } else {
             city = $(this).text();
         }
-        weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + appID;
         if (search_history.indexOf(city) === -1) {
   
             search_history.push(city);
         }
-  
+        // Store city searches in local storage
         localStorage.setItem("cities", JSON.stringify(search_history));
-  
+
+        weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + appID;
+        weatheruv = "https://api.openweathermap.org/data/2.5/onecall?lat=38.25&lon=-85.76&appid=cbdc225bcf486c5d6a5af106323b6350";
+
+        // Display data from weather API 
         $.getJSON(weather, function (json) {
             var temp = (json.main.temp - 273.15) * (9 / 5) + 32;
-            var windspeed = json.wind.speed * 2.237;
+            var temp_min = (json.main.temp_min - 273.15) * (9 / 5) + 32;
+            var temp_max = (json.main.temp_max - 273.15) * (9 / 5) + 32;
+            var humidity = (json.main.humidity);
+            var windspeed = (json.wind.speed * 2.237);
   
             $("#current-city").text(json.name + " " + current_date);
             $("#weather-img").attr("src", "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
             $("#temp").text(temp.toFixed(0) + "°F");
-            $("#humidity").text(json.main.humidity + "%");
+            $("#temp-min").text(temp_min.toFixed(0) + "°F");
+            $("#temp-max").text(temp_max.toFixed(0) + "°F");
+            $("#humidity").text(humidity + "%");
             $("#windspeed").text(windspeed.toFixed(0) + " " + "mph");
-            $("#uv-index").text(uvindex.toFixed(0));
+        });
+        $.getJSON(weatheruv, function (json) {
+            var uvindex = (json.current.uvi);
+  
+            $("#uv-index").text(uvindex.toFixed(1));
         });
     }
-  
+
+
+    // Fetch forecast data from weather API
     function Forecast() {
         var five_day_forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&APPID=" + appID;
        
@@ -43,13 +58,11 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
   
-  
+            // display forecast data from API
             for (var i = 0; i < response.list.length; i++) {
-                //change each text area here
                 var date_and_time = response.list[i].dt_txt;
                 var date = date_and_time.split(" ")[0];
                 var time = date_and_time.split(" ")[1];
-  
                 if (time === "15:00:00") {
                     var year = date.split("-")[0];
                     var month = date.split("-")[1];
@@ -63,25 +76,21 @@ $(document).ready(function () {
             }
         });
     }
-  
+
+    // display prior search history from local storage
     function displaySearchHistory() {
-  
         $("#search-history").empty();
         search_history.forEach(function (city) {
-  
-            //check to see if an entry is already part of search history, and don't add a second version of it
             var history_item = $("<li>");
-  
             history_item.addClass("list-group-item btn btn-light");
             history_item.text(city);
-  
             $("#search-history").prepend(history_item);
         });
+
         $(".btn").click(getWeather);
         $(".btn").click(Forecast);
-  
     }
-    //put the listener on btn class so that all buttons have listener
+
     $("#search-city").click(displaySearchHistory);
-  
-  });
+
+});

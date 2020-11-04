@@ -35,15 +35,17 @@
                     <div class="col-7" >
                         <h3><span id = "current-city"></span><img id="weather-img" src=""></h3> 
                         <p>Temperature: <span id="temp"></span></p>
+                        <p>Low Temperature: <span id="temp-min"></span></p>
+                        <p>High Temperature: <span id="temp-max"></span></p>
                         <p>Humidity: <span id="humidity"></span></p>
                         <p>Wind Speed: <span id="windspeed"></span></p>
-                        <p>UV Index: <span class="bg-danger text-white rounded py-2 px-2" id="uv-index"></p>
+                        <p>UV Index: <span id="uv-index" class="badge badge-danger"></p>
                     </div>
                 </div>
 
                 <h3 class="mt-2 mb-2">5-Day Forecast: </h3>
                 <div class="card-deck">
-                    <div class="card bg-primary">
+                    <div id="days" class="card bg-primary">
                         <div id="day-1" class="card-body p-2">
                             <h6 class="card-date"></h6>
                             <img class = "weather-icon">
