@@ -44,6 +44,15 @@ $(document).ready(function () {
             var uvindex = (json.current.uvi);
   
             $("#uv-index").text(uvindex.toFixed(1));
+            if (uvindex < 3) {
+                $(".badge").css('background-color', 'green');
+            } else if (uvi < 6) {
+                $(".badge").css('background-color', 'yellow');
+            } else if (uvi < 8) {
+                $(".badge").css('background-color', 'orange');
+            } else {
+                $(".badge").css('background-color', 'red');
+            }
         });
     }
 
