@@ -39,6 +39,7 @@ $(document).ready(function () {
             $("#humidity").text(humidity + "%");
             $("#windspeed").text(windspeed.toFixed(0) + " " + "mph");
         });
+        
         $.getJSON(weatheruv, function (json) {
             var uvindex = (json.current.uvi);
   
