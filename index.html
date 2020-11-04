@@ -7,57 +7,86 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark ">
-        <span class="navbar-brand h1 w-100 text-center"> Weather Dashboard</span>
-    </nav>
+    <div class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand h1 w-100 text-center">Weather Dashboard </span>
+    </div>
+
     <div class="search">
         <div class="row">
             <div class="col-3 bg-light search">
-                <h4 class="my-1">Search for a City:</h4>
+                <h4>Search for a City:</h4>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" area-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="add-on2">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    <input id="city" type="text">
+                    <button class="btn btn-primary" id="search-city" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
+                <ul class="mb-3" id="search-history"></ul>
             </div>
-            <div class="col-md-9">
-                <div id="current-weather" class='card'>
-                    <div class="card-body">
-                        <div class="current-city">
-                            <span id="city-name">City Placeholder</span>
-                            <span id="city-icon">Date Placeholder</span>
+
+            <div class="col-9 mt-4">
+                <div class="row" id="current-weather" >
+                    <div class="col-7" >
+                        <h3><span id = "current-city"></span><img id="weather-img" src=""></h3> 
+                        <p>Temperature: <span id="temp"></span></p>
+                        <p>Humidity: <span id="humidity"></span></p>
+                        <p>Wind Speed: <span id="windspeed"></span></p>
+                        <p>UV Index: <span class="bg-danger text-white rounded py-2 px-2" id="uv-index"></p>
+                    </div>
+                </div>
+
+                <h3 class="mt-2 mb-2">5-Day Forecast: </h3>
+                <div class="card-deck">
+                    <div class="card bg-primary">
+                        <div id="day-1" class="card-body p-2">
+                            <h6 class="card-date"></h6>
+                            <img class = "weather-icon">
+                                <p class = "weather-temp"></p>
+                                <p class = "weather-humidity"></p>
                         </div>
-                        <p id="current-temp">Temperature</p>
-                        <p id="current-humidity">Humidity</p>
-                        <p id="current-wind">Wind Speed</p>
-                        <p id="current-uv">UV Index</p>
-                        </ul>
                     </div>
-                </div>
-                <div class="row">
-                    <div id="forecast" class="col-12">
-                        <h3>5-Day Forecast:</h3>
+                    <div class="card bg-primary">
+                        <div id="day-2" class="card-body p-2">
+                            <h6 class="card-date"></h6>
+                            <img class = "weather-icon">
+                                <p class = "weather-temp"></p>
+                                <p class = "weather-humidity"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
-                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
-                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
-                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
-                    <div class="col bg-primary text-white ml-3 mb-3 rounded forecast"></div>
+                    <div class="card bg-primary">
+                        <div id="day-3" class="card-body p-2">
+                            <h6 class="card-date"></h6>
+                            <img class = "weather-icon">
+                                <p class = "weather-temp"></p>
+                                <p class = "weather-humidity"></p>
+                        </div>
+                    </div>
+                    <div class="card bg-primary">
+                        <div id="day-4" class=" card-body p-2">
+                            <h6 class="card-date"></h6>
+                            <img class = "weather-icon">
+                                <p class = "weather-temp"></p>
+                                <p class = "weather-humidity"></p>
+                        </div>
+                    </div>
+                    <div class="card bg-primary">
+                        <div id="day-5" class="card-body p-2">
+                            <h6 class="card-date"></h6>
+                            <img class = "weather-icon">
+                                <p class = "weather-temp"></p>
+                                <p class = "weather-humidity"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="./assets/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

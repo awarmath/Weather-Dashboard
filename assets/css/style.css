@@ -1,24 +1,34 @@
-.navbar span {
+body {
+    border: 4px solid rgba(107, 105, 105, 0.705);
+    border-radius: 10px;
+    margin: 2%;
+    padding: 3%;
+  }
+  
+  #current-weather {
+    border: 1px solid rgba(189, 187, 187, 0.705);
+    margin: 1%;
+  }
+  .navbar span {
     font-size: xx-large;
     font-weight: bold;
-}
-h4 {
+  }
+  h4 {
     font-size: large;
     font-weight: bold;
-}
-.search {
+  }
+  .search {
     padding: 1%;
-}
-.current-city, .city-name, .city-icon {
-    display: flex;
-    flex-direction: row;
-    justify-content: center/space-around;
-    font-size: x-large;
-    font-weight: bold;
-}
-#current-temp {
-    padding-top: 2%;
-}
-#forecast {
-    padding-top: 2%;
-}
+  }
+  .mb-2 {
+    margin: 1%
+  }
+  
+  .card-deck p, h6 {
+    color: white;
+  }
+  
+  #uv-index {
+    background-color: red;
+    width: 5%
+  }
